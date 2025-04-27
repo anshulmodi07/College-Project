@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundraising Platform</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1>Fundraising Platform</h1>
+
+  <div>
+    <h2>Create a Fundraiser</h2>
+    <label for="fundraiser-name">Fundraiser Name:</label>
+    <input type="text" id="fundraiser-name" required><br><br>
+    
+    <label for="fundraiser-moto">Moto:</label>
+    <input type="text" id="fundraiser-moto" required><br><br>
+    
+    <label for="fundraiser-goal">Goal Amount (ETH):</label>
+    <input type="number" id="fundraiser-goal" required><br><br>
+    
+    <label for="fundraiser-recipient">Recipient MetaMask ID:</label>
+    <input type="text" id="fundraiser-recipient" required><br><br>
+    
+    <button onclick="createFundraiser()">Start Fundraising</button>
+  </div>
+
+  <div>
+    <h2>View Fundraisers</h2>
+    <button onclick="viewFundraisers()">View Fundraisers</button>
+    <div id="fundraiser-list"></div>
+  </div>
+
+  <div>
+    <h2>Donate to Fundraiser</h2>
+    <label for="donation-id">Fundraiser ID:</label>
+    <input type="number" id="donation-id" required><br><br>
+    
+    <label for="donation-amount">Donation Amount (ETH):</label>
+    <input type="number" id="donation-amount" required><br><br>
+    
+    <button onclick="donate()">Donate</button>
+  </div>
+
+  <div>
+    <h2>Show Transactions</h2>
+    <button onclick="showTransactions()">Show Transactions</button>
+  </div>
+</body>
+</html>
