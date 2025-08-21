@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ========== VARIABLES ========== */
+:root {
+  --color1: #ffffff;
+  --color2: #333333;
+  --color3: #f9f9f9;
+  --color4: #b89d7a;
+  --color5: #0f0f0f;
+  --accent-color: #b89d7a;
+  --accent-color2: #5e8b7e;
+  --accent-color3: #a05c7b;
+  --accent-color4: #4682b4;
+  --secondary-color: #f5f5f5;
+  --primary-color: #333333;
+}
+
+/* ========== BASE STYLES ========== */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--color1);
+  color: var(--color5);
+  margin: 0;
+  padding: 100px 0 60px;
+  line-height: 1.6;
+  background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: -1;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 3rem;
+  color: var(--color2);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards 0.3s;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  background: var(--accent-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ========== BUTTON STYLES ========== */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 0;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: var(--color2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards 0.4s;
+}
+
+button:hover {
+  color: white;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+#filter-public {
+  border-color: var(--accent-color2);
+}
+
+#filter-public::before {
+  background: var(--accent-color2);
+}
+
+#filter-private {
+  border-color: var(--accent-color3);
+}
+
+#filter-private::before {
+  background: var(--accent-color3);
+}
+
+#filter-all::before {
+  background: var(--accent-color);
+}
+
+button:hover::before {
+  left: 0;
+}
+
+/* ========== HOME BUTTON ========== */
+.home-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 25px;
+  border: 1px solid var(--accent-color4);
+  background: transparent;
+  color: var(--color2);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeRight 1s ease forwards 0.2s;
+  overflow: hidden;
+}
+
+.home-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color4);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.home-button:hover {
+  color: white;
+}
+
+.home-button:hover::before {
+  left: 0;
+}
+
+.home-button svg {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.home-button:hover svg {
+  transform: translateX(-3px);
+}
+
+/* ========== FUNDRAISER GRID ========== */
+#fundraiser-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.fundraiser {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.fundraiser:nth-child(1) { animation-delay: 0.5s; }
+.fundraiser:nth-child(2) { animation-delay: 0.6s; }
+.fundraiser:nth-child(3) { animation-delay: 0.7s; }
+.fundraiser:nth-child(4) { animation-delay: 0.8s; }
+.fundraiser:nth-child(5) { animation-delay: 0.9s; }
+
+.fundraiser::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  transition: height 0.5s ease;
+}
+
+.fundraiser[data-type="public"]::before {
+  background: var(--accent-color2);
+}
+
+.fundraiser[data-type="private"]::before {
+  background: var(--accent-color3);
+}
+
+.fundraiser:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.fundraiser:hover::before {
+  height: 100%;
+}
+
+.fundraiser h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--color2);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.fundraiser p {
+  font-size: 0.9rem;
+  color: var(--color2);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* Donate Button */
+.donate-button {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--color2);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.donate-button::before {
+  background: var(--accent-color);
+}
+
+.donate-button:hover {
+  color: white;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  #fundraiser-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  button {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    font-size: 0.7rem;
+  }
+
+  .home-button {
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 0.7rem;
+  }
+}

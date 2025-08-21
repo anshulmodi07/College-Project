@@ -1,52 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fundraising Platform</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
-  <script src="app.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hope Chain | Blockchain Fundraising</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Fundraising Platform</h1>
-
-  <div>
-    <h2>Create a Fundraiser</h2>
-    <label for="fundraiser-name">Fundraiser Name:</label>
-    <input type="text" id="fundraiser-name" required><br><br>
-    
-    <label for="fundraiser-moto">Moto:</label>
-    <input type="text" id="fundraiser-moto" required><br><br>
-    
-    <label for="fundraiser-goal">Goal Amount (ETH):</label>
-    <input type="number" id="fundraiser-goal" required><br><br>
-    
-    <label for="fundraiser-recipient">Recipient MetaMask ID:</label>
-    <input type="text" id="fundraiser-recipient" required><br><br>
-    
-    <button onclick="createFundraiser()">Start Fundraising</button>
+  <div class="navbar">
+    <div class="logo">
+      <img src="hope_chain_logo-removebg-preview.png" alt="Hope Chain Logo" />
+      <h2 class="heading">Hope Chain</h2>
+    </div>
+    <div class="buttons">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#our-vision">Our Vision</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="ranking.html">Rankings</a></li>  
+        <li id="myPageNavItem" style="display: none;"><a href="mypage.html">My Page</a></li>
+      </ul>
+    </div>
   </div>
 
-  <div>
-    <h2>View Fundraisers</h2>
-    <button onclick="viewFundraisers()">View Fundraisers</button>
-    <div id="fundraiser-list"></div>
+  <div class="title_screen section" id="home">
+    <div class="title_text animate fade-in">
+      <h2>Welcome to Hope Chain</h2>
+      <p>Where Transparency Meets Generosity</p>
+      <div class="link">
+        <img src="metamask-logo.png" class="metamask-button" onclick="connectWallet()" alt="Connect MetaMask" /><br>
+        <button onclick="location.href='donate.html'">Donate Now</button>
+        <button onclick="location.href='create.html'">Create Fundraiser</button>
+        <button onclick="location.href='showtransactions.html'">View Transactions</button>
+       
+      </div>
+    </div>
   </div>
 
-  <div>
-    <h2>Donate to Fundraiser</h2>
-    <label for="donation-id">Fundraiser ID:</label>
-    <input type="number" id="donation-id" required><br><br>
-    
-    <label for="donation-amount">Donation Amount (ETH):</label>
-    <input type="number" id="donation-amount" required><br><br>
-    
-    <button onclick="donate()">Donate</button>
+  <div class="section" id="our-vision">
+    <div class="section-content">
+      <h2 class="section-title animate slide-up">Our Vision</h2>
+      <p class="section-text animate fade-in">
+        At Hope Chain, we believe in harnessing the transparency, security, and decentralization of blockchain to create a better future for fundraisers.
+        Our vision is to ensure that every donation reaches its destination, every transaction is traceable, and every donor feels confident that their
+        contributions are making a real impact—free from middlemen, corruption, or hidden fees.
+      </p>
+    </div>
   </div>
 
-  <div>
-    <h2>Show Transactions</h2>
-    <button onclick="showTransactions()">Show Transactions</button>
+  <div class="section" id="why-us">
+    <div class="section-content">
+      <h2 class="section-title animate slide-up">Why Choose Us</h2>
+      <p class="section-text animate fade-in">
+        Traditional fundraising systems rely on centralized platforms and intermediaries, which can delay fund access, reduce transparency, and involve
+        significant administrative costs. Hope Chain leverages blockchain to solve these problems—providing a decentralized, efficient, and secure platform
+        where donations go directly to those in need.
+      </p>
+      <div class="video-placeholder animate fade-in">[Video Placeholder]</div>
+    </div>
   </div>
+
+  <section id="reviews" class="section">
+    <div class="section-content">
+      <h2 class="section-title">Client Testimonials</h2>
+      <div class="reviews-container">
+        <div class="review-card">
+          <p class="review-text">"Hope Chain made donating so simple. I could see where my money went — a truly transparent platform with incredible impact."</p>
+          <h3 class="review-author">Sarah L.</h3>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"A trustworthy cause with real impact. The user interface is beautiful and intuitive. I've never felt more confident in my donations."</p>
+          <h3 class="review-author">James K.</h3>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"I've recommended Hope Chain to all my friends. The transparency and integrity of this platform is exactly what the fundraising world needed."</p>
+          <h3 class="review-author">Anita R.</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="section" id="about-us">
+    <div class="section-content">
+      <h2 class="section-title animate slide-up">Our Team</h2>
+      <p class="section-text animate fade-in">A dedicated team of professionals passionate about transparency, impact, and innovation in fundraising.</p>
+      <div class="team-container animate fade-in">
+        <div class="team-member">
+          <img src="team1.jpg" alt="Team Member 1">
+          <h3>Emma Johnson</h3>
+          <p>Blockchain Developer</p>
+        </div>
+        <div class="team-member">
+          <img src="team2.jpg" alt="Team Member 2">
+          <h3>Michael Chen</h3>
+          <p>UI/UX Designer</p>
+        </div>
+        <div class="team-member">
+          <img src="team3.jpg" alt="Team Member 3">
+          <h3>Sofia Rodriguez</h3>
+          <p>Smart Contract Engineer</p>
+        </div>
+        <div class="team-member">
+          <img src="team4.jpg" alt="Team Member 4">
+          <h3>David Kim</h3>
+          <p>Marketing Lead</p>
+        </div>
+        <div class="team-member">
+          <img src="team5.jpg" alt="Team Member 5">
+          <h3>Olivia Patel</h3>
+          <p>Community Manager</p>
+        </div>
+      </div>
+      <div class="footer-note">© 2025 Hope Chain | All rights reserved.</div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        const accounts = await ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          document.getElementById('myPageNavItem').style.display = 'block';
+          document.getElementById('myPageBtn').style.display = 'inline-block';
+        }
+      }
+    });
+   </script>
+   <script>
+    // Change navbar style on scroll
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      }
+    });
+  
+    // On window load, check if already connected
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        try {
+          const accounts = await ethereum.request({ method: 'eth_accounts' });
+          if (accounts.length > 0) {
+            document.getElementById('myPageBtn')?.style.setProperty('display', 'inline-block');
+          }
+        } catch (err) {
+          console.error('Error checking accounts:', err);
+        }
+      }
+    });
+  
+    // Connect to MetaMask on button click
+    document.addEventListener('DOMContentLoaded', () => {
+      const connectBtn = document.getElementById('connectWalletBtn');
+      const myPageBtn = document.getElementById('myPageBtn');
+  
+      if (connectBtn) {
+        connectBtn.addEventListener('click', async () => {
+          if (window.ethereum) {
+            try {
+              const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+              const account = accounts[0];
+              alert('Connected to MetaMask: ' + account);
+  
+              connectBtn.textContent = 'Connected';
+              connectBtn.disabled = true;
+  
+              if (myPageBtn) {
+                myPageBtn.style.display = 'inline-block';
+              }
+            } catch (err) {
+              console.error('MetaMask connection error:', err);
+              alert('Failed to connect MetaMask.');
+            }
+          } else {
+            alert('MetaMask not detected. Please install the MetaMask extension.');
+          }
+        });
+      }
+    });
+  </script>
+  
 </body>
 </html>

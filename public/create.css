@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --color1: #ffffff;
+  --color2: #333333;
+  --color3: #f9f9f9;
+  --color4: #b89d7a;
+  --color5: #0f0f0f;
+  --accent-color: #b89d7a;
+  --accent-color2: #5e8b7e;
+  --accent-color3: #a05c7b;
+  --accent-color4: #4682b4;
+  --secondary-color: #f5f5f5;
+  --primary-color: #333333;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 247, 250, 0.9)), 
+              url('https://images.unsplash.com/photo-1494832944834-a08818c634b0?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color5);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Typography */
+h2 {
+  font-size: 3.5rem;
+  color: var(--color2);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  animation: fadeUp 1s ease forwards;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  background-color: var(--accent-color2);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+a {
+  color: var(--accent-color4);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+a:hover {
+  color: var(--accent-color3);
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--accent-color3);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Form Styling */
+#fundraiser-form {
+  width: 100%;
+  max-width: 500px;
+  background: transparent;
+  padding: 40px;
+  text-align: left;
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+#fundraiser-form input,
+#fundraiser-form select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  background: var(--color1);
+  color: var(--color2);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+#fundraiser-form input::placeholder,
+#fundraiser-form select::placeholder {
+  color: #999;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Hover/Focus styling for each input by ID */
+#name:focus, #name:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(184, 157, 122, 0.03);
+}
+
+#description:focus, #description:hover {
+  border-color: var(--accent-color2);
+  background-color: rgba(94, 139, 126, 0.03);
+}
+
+#fundraiserType:focus, #fundraiserType:hover {
+  border-color: var(--accent-color3);
+  background-color: rgba(160, 92, 123, 0.03);
+}
+
+#category:focus, #category:hover {
+  border-color: var(--accent-color4);
+  background-color: rgba(70, 130, 180, 0.03);
+}
+
+#peopleAffected:focus, #peopleAffected:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(184, 157, 122, 0.03);
+}
+
+input:focus::placeholder,
+select:focus::placeholder {
+  color: transparent;
+}
+
+/* Custom select arrow */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background: transparent;
+  color: var(--color2);
+  padding: 12px 30px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  border: 1px solid var(--accent-color);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin: 40px auto 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.9s;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color2);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+button[type="submit"]:hover {
+  border-color: var(--accent-color2);
+  color: white;
+}
+
+button[type="submit"]:hover::before {
+  left: 0;
+}
+
+/* Wallet status */
+#walletStatus {
+  font-size: 0.8rem;
+  color: var(--color2);
+  margin-bottom: 30px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+#walletStatus.connected {
+  background: rgba(94, 139, 126, 0.1);
+  color: var(--accent-color2);
+  box-shadow: 0 2px 10px rgba(94, 139, 126, 0.1);
+}
+
+/* Link container */
+p {
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+p a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  #fundraiser-form {
+    padding: 30px 20px;
+  }
+
+  body {
+    padding: 15px;
+  }
+
+  button[type="submit"] {
+    padding: 14px 28px;
+  }
+}

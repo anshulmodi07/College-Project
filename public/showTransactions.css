@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ========== VARIABLES ========== */
+:root {
+  --color1: #ffffff;          /* White background */
+  --color2: #333333;          /* Dark text */
+  --color3: #f9f9f9;          /* Light section background */
+  --color4: #b89d7a;          /* Gold accent (from image) */
+  --color5: #0f0f0f;          /* Deep text */
+  --accent-color: #b89d7a;    /* Gold accent */
+  --accent-color2: #5e8b7e;   /* Sage green accent */
+  --accent-color3: #a05c7b;   /* Mauve accent */
+  --accent-color4: #4682b4;   /* Steel blue accent */
+  --secondary-color: #f5f5f5; /* Light background */
+  --primary-color: #333333;   /* Main text color */
+}
+
+/* ========== BASE STYLES ========== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(rgba(245, 247, 250, 0.9), rgba(245, 247, 250, 0.9)), 
+              url('https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color5);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+h2 {
+  font-size: 3rem;
+  color: var(--color2);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+}
+
+#transactionDetails {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  animation: slideUp 1s ease forwards;
+}
+
+/* Transaction Card Styles */
+#transactionDetails > div {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-align: left;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-delay: calc(var(--order) * 0.2s);
+}
+
+#transactionDetails > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--accent-color4);
+  transition: height 0.5s ease;
+}
+
+#transactionDetails > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+#transactionDetails > div:hover::before {
+  height: 100%;
+}
+
+#transactionDetails > div:nth-child(3n+1)::before {
+  background: var(--accent-color);
+}
+
+#transactionDetails > div:nth-child(3n+2)::before {
+  background: var(--accent-color2);
+}
+
+#transactionDetails > div:nth-child(3n+3)::before {
+  background: var(--accent-color3);
+}
+
+#transactionDetails strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--color2);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+#transactionDetails p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color2);
+  letter-spacing: 0.5px;
+}
+
+#transactionDetails hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, 
+    var(--accent-color) 0%, 
+    var(--accent-color) 20%, 
+    var(--accent-color2) 20%, 
+    var(--accent-color2) 40%, 
+    var(--accent-color3) 40%, 
+    var(--accent-color3) 60%, 
+    var(--accent-color) 60%, 
+    var(--accent-color) 80%, 
+    var(--accent-color4) 80%, 
+    var(--accent-color4) 100%);
+  margin: 15px 0 5px;
+}
+
+/* Loading state */
+#transactionDetails:has(:only-child) {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color2);
+  padding: 40px;
+  position: relative;
+}
+
+/* #transactionDetails:has(:only-child)::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color3);
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-top: 30px;
+} */
+
+/* Data highlights */
+#transactionDetails p:nth-child(2) {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+#transactionDetails p:nth-child(3) {
+  color: var(--accent-color2);
+  font-weight: 500;
+}
+
+#transactionDetails p:nth-child(4), #transactionDetails p:nth-child(5) {
+  font-size: 0.8rem;
+  color: var(--color5);
+  word-break: break-all;
+}
+
+/* Set animation order for each transaction */
+#transactionDetails > div:nth-child(1) { --order: 1; }
+#transactionDetails > div:nth-child(2) { --order: 2; }
+#transactionDetails > div:nth-child(3) { --order: 3; }
+#transactionDetails > div:nth-child(4) { --order: 4; }
+#transactionDetails > div:nth-child(5) { --order: 5; }
+#transactionDetails > div:nth-child(6) { --order: 6; }
+#transactionDetails > div:nth-child(7) { --order: 7; }
+#transactionDetails > div:nth-child(8) { --order: 8; }
+#transactionDetails > div:nth-child(9) { --order: 9; }
+#transactionDetails > div:nth-child(10) { --order: 10; }
+
+/* Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+  
+  #transactionDetails > div {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  body {
+    background-attachment: scroll;
+    padding: 20px;
+  }
+}

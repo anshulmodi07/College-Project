@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create Fundraiser</title>
+    <link rel="stylesheet" href="create.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="create.js" defer></script>
+</head>
+<body>
+    <h2>Create a New Fundraiser</h2>
+    <div id="walletStatus" class="mb-3 text-muted small">Wallet not connected</div>
+    
+    <form id="fundraiser-form">
+        <label>Name:</label><br>
+        <input type="text" id="name" required><br>
+        
+        <label>Description:</label><br>
+        <input type="text" id="description" required><br>
+        
+        <label>Fundraiser Type:</label><br>
+        <select id="fundraiserType">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </select><br>
+
+        <label for="category">Category:</label><br>
+        <select id="category"></select><br>
+
+        <label>People Affected:</label><br>
+        <input type="number" id="peopleAffected" required><br>
+
+        <button type="submit">Create Fundraiser</button>
+    </form>
+
+    <p><a href="donate.html">Go to Donate Page</a></p>
+</body>
+</html>

@@ -1,0 +1,623 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ========== VARIABLES ========== */
+:root {
+  --color1: #ffffff;          /* White background */
+  --color2: #333333;          /* Dark text */
+  --color3: #f9f9f9;          /* Light section background */
+  --color4: #b89d7a;          /* Gold accent (from image) */
+  --color5: #0f0f0f;          /* Deep text */
+  --accent-color: #b89d7a;    /* Gold accent */
+  --accent-color2: #5e8b7e;   /* Sage green accent */
+  --accent-color3: #a05c7b;   /* Mauve accent */
+  --accent-color4: #4682b4;   /* Steel blue accent */
+  --secondary-color: #f5f5f5; /* Light background */
+  --primary-color: #333333;   /* Main text color */
+}
+
+/* ========== BASE STYLES ========== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+              url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color5);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ========== DASHBOARD STYLES ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--accent-color2);
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--accent-color2);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color2);
+  margin-bottom: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.text-success {
+  color: var(--accent-color2) !important;
+}
+
+.wallet-info {
+  background: var(--color1) !important;
+  border-left: 4px solid var(--accent-color);
+  padding: 10px 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.wallet-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+#walletAddress {
+  font-family: monospace;
+  color: var(--accent-color4);
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+/* ========== CARD STYLES ========== */
+.card {
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: var(--color1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.card-title {
+  color: var(--color2);
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ========== TAB STYLES ========== */
+.nav-tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.nav-tabs li {
+  margin-right: 15px;
+}
+
+.nav-tabs a {
+  color: var(--color2);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color2);
+  transition: width 0.3s ease;
+}
+
+.nav-tabs a.active {
+  color: var(--accent-color2);
+}
+
+.nav-tabs a.active::after {
+  width: 100%;
+}
+
+.nav-tabs a:hover {
+  color: var(--accent-color2);
+}
+
+.nav-tabs a:hover::after {
+  width: 100%;
+}
+
+.tab-content > div:not(.show) {
+  display: none;
+}
+
+.tab-content > div.show {
+  display: block;
+}
+
+/* ========== FUNDRAISER CARDS ========== */
+#activeFundraisers, 
+#completedFundraisers {
+  width: 100%;
+}
+
+.request-card {
+  border: none !important;
+  border-left: 4px solid var(--accent-color2) !important;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.request-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.request-card h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color2);
+  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.request-card p {
+  color: var(--color2);
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* ========== PROGRESS BAR STYLES ========== */
+.progress {
+  height: 25px;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: var(--accent-color);
+}
+
+.bg-success {
+  background-color: var(--accent-color2) !important;
+}
+
+.bg-info {
+  background-color: var(--accent-color4) !important;
+}
+
+.bg-warning {
+  background-color: var(--accent-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--accent-color4) !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.d-flex.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex.justify-content-between.align-items-center {
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  color: white;
+}
+
+.badge.bg-primary {
+  background-color: var(--accent-color4);
+}
+
+/* ========== BUTTON STYLES ========== */
+.btn {
+  border-radius: 0 !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  display: inline-block;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 0.7rem;
+}
+
+.upload-btn,
+.btn-success {
+  background-color: var(--accent-color2) !important;
+  border-color: var(--accent-color2) !important;
+  color: white;
+}
+
+.btn-success:hover,
+.upload-btn:hover {
+  background-color: #4e7a6e !important;
+  box-shadow: 0 4px 10px rgba(94, 139, 126, 0.3);
+}
+
+.delete-btn,
+.btn-danger {
+  background-color: var(--accent-color3) !important;
+  border-color: var(--accent-color3) !important;
+  color: white;
+}
+
+.btn-danger:hover,
+.delete-btn:hover {
+  background-color: #8f4f6c !important;
+  box-shadow: 0 4px 10px rgba(160, 92, 123, 0.3);
+}
+
+/* Custom upload expenses button */
+.upload-expenses {
+  background-color: var(--accent-color2);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-expenses:hover {
+  background-color: #4e7a6e;
+}
+
+/* Custom delete fundraiser button */
+.delete-fundraiser {
+  background-color: var(--accent-color3);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-fundraiser:hover {
+  background-color: #8f4f6c;
+}
+
+/* ========== BADGE STYLES ========== */
+.badge {
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border-radius: 0;
+}
+
+/* ========== MODAL STYLES ========== */
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: 2px solid var(--accent-color2);
+  padding: 15px 20px;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--color2);
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-label {
+  color: var(--color2);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: var(--accent-color2);
+}
+
+/* ========== ANIMATIONS ========== */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== CUSTOM STYLES FOR THIS PAGE ========== */
+/* Public badge */
+.public {
+  background-color: var(--accent-color4);
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  border-radius: 2px;
+  text-transform: lowercase;
+}
+
+/* Fixed card width for better layout */
+.request-card {
+  position: relative;
+  min-height: 250px;
+}
+
+/* Modify the styling of dynamically generated content */
+.tab-pane {
+  width: 100%;
+}
+
+/* Modify styling for fundraiser info */
+.request-card h5 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive styles for fundraiser cards */
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .d-flex {
+    flex-direction: column;
+  }
+  
+  .wallet-info {
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  .nav-tabs li {
+    margin-right: 10px;
+  }
+  
+  .nav-tabs a {
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+}
+/* ========== FILE UPLOAD FORM STYLES ========== */
+/* Styling for the file input area */
+input[type="file"] {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%;
+    background-color: var(--color1);
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+  }
+  
+  /* Style for the file selection button */
+  ::-webkit-file-upload-button {
+    background-color: var(--accent-color2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+  }
+  
+  ::-webkit-file-upload-button:hover {
+    background-color: #4e7a6e;
+  }
+  
+  /* Upload button styling */
+  #upload {
+    background-color: var(--accent-color2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  #upload:hover {
+    background-color: #4e7a6e;
+    box-shadow: 0 4px 10px rgba(94, 139, 126, 0.3);
+  }
+  
+  /* Upload form container styling */
+  .upload-form-container {
+    background-color: var(--color1);
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+  }
+  
+  .upload-form-container h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--accent-color2);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Select CSV file label styling */
+  label[for="csv-file"] {
+    color: var(--color2);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  /* General form styling */
+  form {
+    max-width: 100%;
+  }
+  
+  /* Style for when no file is chosen text */
+  .file-chosen-text {
+    color: #666;
+    font-size: 0.85rem;
+    margin-left: 5px;
+  }

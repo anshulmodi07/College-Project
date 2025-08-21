@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Fundraiser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Create Fundraiser</h2>
+
+    <form id="fundraiserForm">
+        <label for="fundraiserType">Select Fundraiser Type:</label>
+        <select id="fundraiserType" onchange="toggleFields()">
+            <option value="">Select</option>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </select><br>
+
+        <!-- Public Fields -->
+        <div id="publicFields" style="display:none;">
+            <label for="disaster">Select Disaster:</label>
+            <select id="disaster">
+                <option value="">Select Disaster</option>
+                <option value="floods">Floods</option>
+                <option value="drought">Drought</option>
+                <option value="tsunami">Tsunami</option>
+            </select><br>
+
+            <label for="peopleAffected">Number of people affected:</label>
+            <input type="number" id="peopleAffected"><br>
+        </div>
+
+        <!-- Private Fields -->
+        <div id="privateFields" style="display:none;">
+            <label for="disease">Select Disease:</label>
+            <select id="disease">
+                <option value="">Select Disease</option>
+                <option value="heartDisease">Heart Disease</option>
+                <option value="cancer">Cancer</option>
+            </select><br>
+
+            <label for="severity">Severity of Disease:</label>
+            <select id="severity">
+                <option value="">Select Severity</option>
+                <option value="mild">Mild</option>
+                <option value="moderate">Moderate</option>
+                <option value="severe">Severe</option>
+            </select><br>
+        </div>
+
+        <button type="button" id="nextButton" onclick="processForm()">Next</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
