@@ -515,38 +515,6 @@ body {
 .team-member:nth-child(4) p { color: var(--accent-color4); }
 .team-member:nth-child(5) p { color: var(--accent-color); }
 
-/* ========== VIDEO PLACEHOLDER ========== */
-.video-placeholder {
-  width: 80%;
-  height: 400px;
-  margin-top: 30px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.video-placeholder::before {
-  content: "Blockchain Fundraising Demo";
-  position: absolute;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  color: var(--color2);
-  z-index: 1;
-}
-
-.video-placeholder::after {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid var(--accent-color3);
-  border-top-color: transparent;
-  animation: spin 1s linear infinite;
-}
 
 /* ========== FOOTER ========== */
 .footer-note {
