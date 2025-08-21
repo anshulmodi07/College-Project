@@ -30,11 +30,11 @@
       <h2>Welcome to Hope Chain</h2>
       <p>Where Transparency Meets Generosity</p>
       <div class="link">
-        <img src="metamask-logo.png" class="metamask-button" onclick="connectWallet()" alt="Connect MetaMask" /><br>
+        <!-- MetaMask Connect Button -->
+        <button id="connectWalletBtn">Connect MetaMask</button><br>
         <button onclick="location.href='donate.html'">Donate Now</button>
         <button onclick="location.href='create.html'">Create Fundraiser</button>
         <button onclick="location.href='showtransactions.html'">View Transactions</button>
-       
       </div>
     </div>
   </div>
@@ -116,76 +116,51 @@
       <div class="footer-note">© 2025 Hope Chain | All rights reserved.</div>
     </div>
   </div>
+
   <script>
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-    
-    window.addEventListener('load', async () => {
-      if (window.ethereum) {
-        const accounts = await ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-          document.getElementById('myPageNavItem').style.display = 'block';
-          document.getElementById('myPageBtn').style.display = 'inline-block';
-        }
-      }
-    });
-   </script>
-   <script>
-    // Change navbar style on scroll
+    // Navbar scroll effect
     window.addEventListener('scroll', function () {
       const navbar = document.querySelector('.navbar');
       if (navbar) {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
       }
     });
-  
+
+    // Connect MetaMask
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          const account = accounts[0];
+          alert('Connected to MetaMask: ' + account);
+
+          document.getElementById('connectWalletBtn').textContent = 'Connected';
+          document.getElementById('connectWalletBtn').disabled = true;
+
+          // Show "My Page"
+          document.getElementById('myPageNavItem').style.display = 'block';
+        } catch (err) {
+          console.error('MetaMask connection error:', err);
+          alert('Failed to connect MetaMask.');
+        }
+      } else {
+        alert('MetaMask not detected. Please install the MetaMask extension.');
+      }
+    }
+
     // On window load, check if already connected
     window.addEventListener('load', async () => {
       if (window.ethereum) {
         try {
           const accounts = await ethereum.request({ method: 'eth_accounts' });
           if (accounts.length > 0) {
-            document.getElementById('myPageBtn')?.style.setProperty('display', 'inline-block');
+            document.getElementById('myPageNavItem').style.display = 'block';
+            document.getElementById('connectWalletBtn').textContent = 'Connected';
+            document.getElementById('connectWalletBtn').disabled = true;
           }
         } catch (err) {
           console.error('Error checking accounts:', err);
         }
-      }
-    });
-  
-    // Connect to MetaMask on button click
-    document.addEventListener('DOMContentLoaded', () => {
-      const connectBtn = document.getElementById('connectWalletBtn');
-      const myPageBtn = document.getElementById('myPageBtn');
-  
-      if (connectBtn) {
-        connectBtn.addEventListener('click', async () => {
-          if (window.ethereum) {
-            try {
-              const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-              const account = accounts[0];
-              alert('Connected to MetaMask: ' + account);
-  
-              connectBtn.textContent = 'Connected';
-              connectBtn.disabled = true;
-  
-              if (myPageBtn) {
-                myPageBtn.style.display = 'inline-block';
-              }
-            } catch (err) {
-              console.error('MetaMask connection error:', err);
-              alert('Failed to connect MetaMask.');
-            }
-          } else {
-            alert('MetaMask not detected. Please install the MetaMask extension.');
-          }
-        });
       }
     });
   </script>
