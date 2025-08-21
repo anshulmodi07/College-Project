@@ -1,19 +1,31 @@
 {
-  "name": "a",
+  "name": "crowdfunding-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Backend server for blockchain crowdfunding website",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.2",
+    "node": "^23.11.0",
+    "server.js": "^1.0.0",
+    "web3": "^4.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryanv1281/hope_chain.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^2.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "web3": "^4.16.0"
-  }
+  "bugs": {
+    "url": "https://github.com/aryanv1281/hope_chain/issues"
+  },
+  "homepage": "https://github.com/aryanv1281/hope_chain#readme"
 }
