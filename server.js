@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Load ABI and contract address
-const abi = JSON.parse(fs.readFileSync("./FundraiserABI.json", "utf-8"));
+const abi = JSON.parse(fs.readFileSync("./FundraiserABI", "utf-8"));
 
 const web3 = new Web3(new Web3.providers.HttpProvider(process.env.INFURA_URL));
 
