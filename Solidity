@@ -1,0 +1,141 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Fundraiser {
+    struct FundraiserData {
+        uint256 id;  // Added ID field for easier reference
+        string name;
+        string description;
+        uint256 goal;
+        address payable owner;
+        uint256 amountRaised;
+        string fundraiserType;
+        string category;
+        uint256 peopleAffected;
+        bool isCompleted; 
+        bool isDeleted; // Track completion status
+    }
+
+    struct ExpenseReport {
+        uint256 fundraiserId;
+        string csvHash;
+        uint256 timestamp;
+        address submittedBy;
+    }
+
+    mapping(uint256 => FundraiserData) public fundraisers;
+    mapping(uint256 => ExpenseReport) public expenseReports;
+    uint256 public fundraiserCount;
+    uint256 public expenseReportCount;
+
+    event FundraiserCreated(uint256 id, string name, address owner);
+    event DonationReceived(uint256 id, address donor, uint256 amount);
+    event ExpenseReportAdded(uint256 fundraiserId, string csvHash, address submittedBy);
+    event FundraiserDeleted(uint256 id, address owner); // Event for deletion
+
+    function createFundraiser(
+        string calldata _name,
+        string calldata _description,
+        string calldata _fundraiserType,
+        string calldata _category,
+        uint256 _peopleAffected
+    ) public {
+        uint256 estimatedGoal = estimateGoal(_category, _peopleAffected);
+        uint256 newId = ++fundraiserCount;
+
+        fundraisers[newId] = FundraiserData({
+            id: newId,
+            name: _name,
+            description: _description,
+            goal: estimatedGoal,
+            owner: payable(msg.sender),
+            amountRaised: 0,
+            fundraiserType: _fundraiserType,
+            category: _category,
+            peopleAffected: _peopleAffected,
+            isCompleted: false,
+            isDeleted: false
+        });
+
+        emit FundraiserCreated(newId, _name, msg.sender);
+    }
+
+    function deleteFundraiser(uint256 _id) public {
+        require(fundraisers[_id].owner == msg.sender, "Only the owner can delete this fundraiser");
+        require(!fundraisers[_id].isDeleted, "Fundraiser is already deleted");
+
+        fundraisers[_id].isDeleted = true;
+        emit FundraiserDeleted(_id, msg.sender);
+    }
+
+    function estimateGoal(string memory _category, uint256 _peopleAffected) internal pure returns (uint256) {
+        bytes32 cat = keccak256(bytes(_category));
+        if (cat == keccak256("flood") || cat == keccak256("drought") || cat == keccak256("earthquake")) {
+            return _peopleAffected * 0.01 ether;
+        } else if (cat == keccak256("cancer")) {
+            return _peopleAffected * 0.5 ether;
+        } else if (cat == keccak256("heartsurgery")) {
+            return _peopleAffected * 1 ether;
+        }
+        return _peopleAffected * 0.05 ether;
+    }
+
+    function donate(uint256 _id) public payable {
+        require(msg.value > 0, "Amount must be > 0");
+        FundraiserData storage f = fundraisers[_id];
+        f.amountRaised += msg.value;
+        
+        // Update completion status if goal reached
+        if (f.amountRaised >= f.goal && !f.isCompleted) {
+            f.isCompleted = true;
+        }
+        
+        f.owner.transfer(msg.value);
+        emit DonationReceived(_id, msg.sender, msg.value);
+    }
+
+    function getFundraisersByOwner(address owner) public view returns (FundraiserData[] memory) {
+        FundraiserData[] memory result = new FundraiserData[](fundraiserCount);
+        uint counter = 0;
+        
+        for (uint i = 1; i <= fundraiserCount; i++) {
+            if (fundraisers[i].owner == owner) {
+                result[counter] = fundraisers[i];
+                counter++;
+            }
+        }
+        
+        FundraiserData[] memory finalResult = new FundraiserData[](counter);
+        for (uint i = 0; i < counter; i++) {
+            finalResult[i] = result[i];
+        }
+        return finalResult;
+    }
+
+    function addExpenseReport(uint256 _fundraiserId, string memory _csvHash) public {
+        FundraiserData storage f = fundraisers[_fundraiserId];
+        require(f.owner == msg.sender, "Only owner can add report");
+        require(f.isCompleted, "Fundraiser not completed yet");
+        
+        expenseReports[++expenseReportCount] = ExpenseReport({
+            fundraiserId: _fundraiserId,
+            csvHash: _csvHash,
+            timestamp: block.timestamp,
+            submittedBy: msg.sender
+        });
+        
+        emit ExpenseReportAdded(_fundraiserId, _csvHash, msg.sender);
+    }
+
+    function getExpenseReports(uint256 _fundraiserId) public view returns (ExpenseReport memory) {
+        return expenseReports[_fundraiserId];
+    }
+
+    function getAllFundraisers() public view returns (FundraiserData[] memory) {
+        FundraiserData[] memory all = new FundraiserData[](fundraiserCount);
+        for (uint i = 0; i < fundraiserCount; i++) {
+            all[i] = fundraisers[i + 1];
+        }
+        return all;
+    }
+}
